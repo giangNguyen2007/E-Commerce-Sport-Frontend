@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import './Navbar.css';
 // import { Link } from 'react-router-dom';
-// import { SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
+import { SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
 // import { AuthContext } from '../context/AuthContext';
 
 type Props = {}
@@ -20,7 +20,7 @@ const Navbar = (props: Props) => {
                     </div>
                     <div className="search-container">
                         <input type="text" />
-                        {/* <SearchOutlined/> */}
+                        <SearchOutlined/>
                     </div>
                 </div>
 

@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Login from './pages/Register&Login/Login';
 
 function App() {
   return (
@@ -17,11 +18,11 @@ function App() {
               <Navbar />
               <Routes>
                   <Route path="/home" element={<Home />} />
+                  <Route path="/" element={<Login />} /> 
                   {/* <Route path="/list/:category" element={<CategoryPage />} />
                   <Route path="/product/:id" element={<SingleProductPage />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} /> 
                   <Route path="/payment-success" element={<PaymentSuccess />} /> */}
               </Routes>
               {/* <Footer /> */}
