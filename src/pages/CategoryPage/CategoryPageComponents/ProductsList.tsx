@@ -3,7 +3,7 @@ import './ProductsList.css';
 import ProductCard from './ProductCard'
 import axios from 'axios'
 import { adminRequest } from '../../../axios'
-import { Product } from '../../../Types';
+import { IProduct } from '../../../Types';
 
 type ProductListProps = {
     cat : string | undefined
@@ -12,14 +12,14 @@ type ProductListProps = {
 }
 
 const ProductsList = ({cat, colorFilter, sizeFilter} : ProductListProps) => {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<IProduct[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
 
 
     useEffect(() => {
         const getProducts = async () => { 
             try {
-                const res = await adminRequest.get<Product[]>(`product?category=${cat}`)
+                const res = await adminRequest.get<IProduct[]>(`product?category=${cat}`)
                 console.log(res.data)
                 setProducts(res.data)
             } catch (error) {

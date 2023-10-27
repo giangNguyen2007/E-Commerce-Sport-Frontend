@@ -1,8 +1,10 @@
 
 import React, { useContext, useState } from 'react';
-import { CartContext } from '../context.js/CartContext';
-import { AuthContext } from '../context.js/AuthContext';
+
 import { saveCart, fetchUserCart, fetchSingleProduct } from './cartAPI';
+import { CartContext } from '../context/CartContext';
+import { AuthContext } from '../context/AuthContext';
+import { ICartProduct, IProduct } from '../Types';
 
 
 const useChangeCart = () => {
@@ -10,26 +12,29 @@ const useChangeCart = () => {
     const {cartItems, dispatchCart} = useContext(CartContext);
     const {user } = useContext(AuthContext);
 
-    const addItemToCart = ( product, quantity, selectColor, selectSize) => { 
+    const addItemToCart = ( product: IProduct, quantity: number, selectColor: string, selectSize: string) => { 
 
         // debugger;
 
-        const selectProduct = {
-            ...product,
+    const cartProduct : ICartProduct = {
+            _id : product._id,
+            title : product.title,
+            img : product.img,
             key : product._id + '&' + selectColor + '&' + selectSize,
             color: selectColor,
-            size: selectSize
+            size: selectSize,
+            price: product.price
         }
 
         // check if product already in cart
-        const index = cartItems.findIndex( item => item.product.key === selectProduct.key);
+        const index = cartItems.findIndex( item => item.product.key === cartProduct.key);
 
         if (index > -1) {
             // if product already in cart => update quantity
             dispatchCart({
                 type: 'UPDATE_ONE',
                 payload: {
-                    product: selectProduct,
+                    product: cartProduct,
                     quantity: quantity + cartItems[index].quantity
                 }
             });
@@ -41,7 +46,7 @@ const useChangeCart = () => {
             dispatchCart({
                 type: 'ADD_ONE',
                 payload: {
-                    product: selectProduct,
+                    product: cartProduct,
                     quantity: quantity,
                 }
             });
@@ -52,7 +57,7 @@ const useChangeCart = () => {
         
     }
 
-    const removeItemFromCart = ( key) => { 
+    const removeItemFromCart = ( key: string) => { 
 
         // check if product already in cart
         const index = cartItems.findIndex( item => item.product.key === key);
@@ -71,25 +76,8 @@ const useChangeCart = () => {
 
     }
 
-    const loadUserCart = async ( userResponse) => { 
 
-        try {
-            const userCart = await fetchUserCart(userResponse);
-            debugger;
-            if (userCart) {
-                for (const item of userCart.products){
-                    const product = await fetchSingleProduct(item.productId)
-                    addItemToCart(product, item.quantity, item.color, item.size);
-                } 
-            }
-         
-        } catch (error) {
-            throw Error(error)
-        }
-     
-    }
-
-  return {addItemToCart, removeItemFromCart, loadUserCart}
+  return {addItemToCart, removeItemFromCart}
 }
 
 export default useChangeCart

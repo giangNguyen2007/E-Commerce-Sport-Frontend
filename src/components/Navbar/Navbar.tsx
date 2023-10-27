@@ -3,16 +3,16 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
 import { AuthContext } from '../../context/AuthContext';
+import { Badge } from '@material-ui/core';
+import { CartContext } from '../../context/CartContext';
 // import { AuthContext } from '../context/AuthContext';
 
 type Props = {}
 
 const Navbar = (props: Props) => {
 
+    const {cartItems} = useContext(CartContext);
     const {user} = useContext(AuthContext);
-    console.log("User read from Navbar")
-  
-    console.log(user)
 
   return (
         <div className='navbar'>
@@ -58,7 +58,9 @@ const Navbar = (props: Props) => {
                     } */}
 
                     <Link to={`/cart`}>
+                        <Badge badgeContent={cartItems.length} color='primary'>  
                             <div className='menu-item'> <ShoppingCartOutlined/> </div>
+                        </Badge>
                     </Link>
                     
                 </div>

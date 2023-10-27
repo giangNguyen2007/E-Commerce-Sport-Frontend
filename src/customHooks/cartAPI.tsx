@@ -1,22 +1,23 @@
 import { useContext } from 'react';
 import { baseRequest } from '../axios';
-import { CartContext } from '../context.js/CartContext';
 import useChangeCart from './useChangeCart';
+import { User } from '../context/AuthContext';
+import { ICartBackend, ICartProduct, ICartProductBackend, IProduct } from '../Types';
 
 
 // utility function to fetch single product from backend
-const fetchSingleProduct = async (productId) => {
+const fetchSingleProduct = async (productId : string) => {
     try {
-        const res = await baseRequest.get(`product/${productId}`)
+        const res = await baseRequest.get<IProduct>(`product/${productId}`)
         debugger;
         return res.data
-    } catch (error) {
+    } catch (error: any) {
         throw Error(error)
     }
 }
 
 // utility function to send cart to backend
-const saveCart = async (user, products) => {
+const saveCart = async (user : User, products : ICartProductBackend[]) => {
     try {
         const response = await baseRequest.post(`/cart/${user._id}`, { userId : user._id, products}, {
             headers: {
@@ -24,16 +25,17 @@ const saveCart = async (user, products) => {
             }
         })
         
-    } catch (error) {
+    } catch (error: any) {
         throw Error(error)
     }
 }
 
+
 // utility function to load cart from backend, triggered after login
-const fetchUserCart = async (user) => {
+const fetchUserCart = async (user: User) => {
  
     try {
-        const userCart = await baseRequest.get(`/cart/find/${user._id}`, {
+        const userCart = await baseRequest.get<ICartBackend[]>(`/cart/find/${user._id}`, {
             headers: {
                 token: 'Bearer ' + user.accessToken
             }
@@ -45,7 +47,7 @@ const fetchUserCart = async (user) => {
             return null
         }
         
-    } catch (error) {
+    } catch (error: any) {
         throw Error(error)
     }
 }

@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import AuthContextProvider from './context/AuthContext';
 import CounterContextProvider from './context/CounterContext';
 import WorkoutContextProvider from './context/WorkoutContext';
+import CartContextProvider from './context/CartContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,11 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
-    <CounterContextProvider>
-    <WorkoutContextProvider>
+    <CartContextProvider>
+
         <App />
-    </WorkoutContextProvider>
-    </CounterContextProvider>
+
+    </CartContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );

@@ -3,9 +3,9 @@ import React, { useContext, useState } from 'react'
 
 
 const useQuantity = () => {
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState<number>(1)
 
-    const handleQuantity = (action_type) => { 
+    const handleQuantity = (action_type : "Plus"| "Minus") => { 
         switch (action_type) {
             case 'Plus':
                 // debugger;

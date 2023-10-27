@@ -2,10 +2,11 @@ import './ProductCard.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import SelectAddCart from '../../../components/SelectAndAddCart/SelectAddCartModule'
-import { Product } from '../../../Types'
+import { IProduct } from '../../../Types'
+import SelectAddCart from '../../../components/SelectAndAddCart/SelectAddCartModule'
 
 type ProductCardProps = {
-    product : Product
+    product : IProduct
     key: string
 }
 
@@ -32,7 +33,7 @@ const ProductCard = ( {product, key} : ProductCardProps) => {
                     </div>
                 </div>
 
-                {/* <SelectAddCart product={product} /> */}
+                <SelectAddCart product={product} />
             </div>    
       
     </div>
