@@ -2,10 +2,10 @@
 import React, { useContext, useState } from 'react'
 
 import {useNavigate} from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import { baseRequest } from '../../axios';
+import { AuthContext } from '../context/AuthContext';
+import { baseRequest } from '../axios';
 // import useChangeCart from './useChangeCart';
-import { User } from '../../context/AuthContext';
+import { User } from '../context/AuthContext';
 
 type LoginDataType = {
     username: String
@@ -25,21 +25,21 @@ const useAuth = () => {
     const navigate = useNavigate();
 
 
-    const authenticateUser = async (user : LoginDataType, action : AuthAction) => { 
+    const authenticateUser = async (user : LoginDataType, action : AuthAction): Promise<User> => { 
         setIsLoading(true);
         setError(null);
 
 
         try {
             const response = await baseRequest.post<User>(`/auth/${action}`, user) ;
-            debugger;
+      
             console.log(response.data)
 
             const responseUser : User = response.data
 
-            // if no error
             setIsLoading(false) ;
 
+            debugger;
             dispatchAuth( { type: 'LOG_IN', payload: responseUser }) ;
 
             console.log(response.data);

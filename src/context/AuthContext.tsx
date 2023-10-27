@@ -20,6 +20,7 @@ type ActionType = {
 function AuthReducer(state : UserType, action : ActionType){
     switch(action.type) {
       case "LOG_IN":
+        debugger;
         return {
             user: action.payload
         }
@@ -48,7 +49,7 @@ export default function AuthContextProvider ({children, } : AuthContextProviderP
   const [state, dispatchAuth] = useReducer(AuthReducer, {user: null})
 
   return (  
-      <AuthContext.Provider value={{ user : null, dispatchAuth : dispatchAuth}}>
+      <AuthContext.Provider value={{ ...state, dispatchAuth : dispatchAuth}}>
           {children}
       </AuthContext.Provider>
   )

@@ -1,15 +1,18 @@
 import React, { useContext } from 'react'
 import './Navbar.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
+import { AuthContext } from '../../context/AuthContext';
 // import { AuthContext } from '../context/AuthContext';
 
 type Props = {}
 
 const Navbar = (props: Props) => {
 
-    // const {user, dispatchAuth} = useContext(AuthContext);
-    // console.log(user)
+    const {user} = useContext(AuthContext);
+    console.log("User read from Navbar")
+  
+    console.log(user)
 
   return (
         <div className='navbar'>
@@ -30,9 +33,9 @@ const Navbar = (props: Props) => {
 
                 <div className="navbar-right">
                     <div className='user-email'> 
-                        {/* {user? user.email : null} */}
+                        {user? user.email : null}
                     </div>
-                    {/* <Link to={`/`}>
+                    <Link to={`/`}>
                         <div className='menu-item'>Home</div>
                     </Link>
 
@@ -40,7 +43,11 @@ const Navbar = (props: Props) => {
                         <div className='menu-item'>Register</div>
                     </Link>
 
-                    { user?
+                    <Link to={`/login`}>
+                        <div className='menu-item'>Login</div>
+                    </Link>
+
+                    {/* { user?
                         <div className='menu-item' onClick={handleLogout}>
                             Logout
                         </div>
@@ -48,13 +55,11 @@ const Navbar = (props: Props) => {
                         <Link to={`/login`}>
                             <div className='menu-item'>Login</div>
                         </Link>
-                    }
+                    } */}
 
                     <Link to={`/cart`}>
-                        <Badge badgeContent={cartItems.length} color='primary'>
-                            <div className='menu-item'> <ShoppingCartOutlined style={{fontsize:10}}/> </div>
-                        </Badge>
-                    </Link> */}
+                            <div className='menu-item'> <ShoppingCartOutlined/> </div>
+                    </Link>
                     
                 </div>
 

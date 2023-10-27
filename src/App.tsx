@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/HomePage/Home';
 
 import {
   BrowserRouter as Router,
@@ -10,6 +10,7 @@ import {
   Link
 } from "react-router-dom";
 import Login from './pages/Register&Login/Login';
+import CategoryPage from './pages/CategoryPage/CategoryPage';
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
             <Router> 
               <Navbar />
               <Routes>
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/" element={<Login />} /> 
-                  {/* <Route path="/list/:category" element={<CategoryPage />} />
-                  <Route path="/product/:id" element={<SingleProductPage />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} /> 
+                  <Route path="/list/:category" element={<CategoryPage />} />
+                  {/* <Route path="/product/:id" element={<SingleProductPage />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/payment-success" element={<PaymentSuccess />} /> */}

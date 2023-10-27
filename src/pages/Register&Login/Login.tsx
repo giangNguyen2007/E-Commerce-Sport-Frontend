@@ -1,7 +1,7 @@
 import './Register.css'
 import { useState, useEffect, useContext} from 'react'
 import {useNavigate} from 'react-router-dom';
-import useAuth from '../../components/customHooks/useAuth';
+import useAuth from '../../customHooks/useAuth';
 
 const Login = () => {
    
@@ -17,7 +17,7 @@ const Login = () => {
       e.preventDefault();
 
       try {
-        const response = await authenticate({username, email, password}, 'login');
+        const response = await authenticate({username:'giang-nguyen4', email: 'akatsuki@gmail.com', password: '12345'}, 'login');
       
       } catch (e){
         console.log(e)
