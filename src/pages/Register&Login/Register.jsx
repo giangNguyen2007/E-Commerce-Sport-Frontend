@@ -1,8 +1,7 @@
 import './Register.css'
 import {React, useState} from 'react';
-import Navbar from '../../components/Navbar/Navbar';
-import useAuth from '../../custom-hook/useAuth';
 import {useNavigate} from 'react-router-dom';
+import useAuth from '../../customHooks/useAuth';
 
 const Register = () => {
    

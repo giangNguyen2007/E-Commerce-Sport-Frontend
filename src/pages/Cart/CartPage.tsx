@@ -18,6 +18,7 @@ const CartPage = () => {
 
     const handleSaveCart = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
            // if user logged in, save cart data in backend
+           debugger;
         if (user) {
             // debugger;
             const products : ICartProductBackend[] = cartItems.map( (cartItem) => 

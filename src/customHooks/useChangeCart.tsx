@@ -4,10 +4,11 @@ import React, { useContext, useState } from 'react';
 import { saveCart, fetchUserCart, fetchSingleProduct } from './cartAPI';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
-import { ICartProduct, IProduct } from '../Types';
+import { ICartBackend, ICartProduct, ICartProductBackend, IProduct, User } from '../Types';
 
 
 const useChangeCart = () => {
+    
 
     const {cartItems, dispatchCart} = useContext(CartContext);
     const {user } = useContext(AuthContext);
@@ -76,8 +77,26 @@ const useChangeCart = () => {
 
     }
 
+    const loadUserCart = async (userResponse : User) => { 
 
-  return {addItemToCart, removeItemFromCart}
+        try {
+            const userCart : ICartBackend|null = await fetchUserCart(userResponse);
+            // debugger;
+            if (userCart) {
+                for (const item of userCart.products){
+                    const product : IProduct = await fetchSingleProduct(item.productId)
+                    addItemToCart(product, item.quantity, item.color, item.size);
+                } 
+            }
+         
+        } catch (error: any) {
+            throw Error(error)
+        }
+     
+    }
+
+
+  return {addItemToCart, removeItemFromCart, loadUserCart}
 }
 
 export default useChangeCart

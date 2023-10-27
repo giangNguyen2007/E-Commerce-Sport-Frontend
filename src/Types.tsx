@@ -1,7 +1,17 @@
+
+export type User = {
+    _id : String
+    username: String
+    email: String
+    akatsuki: String
+    accessToken? : String
+}
+
 // product fetched from backend : size and color in array, have not been selected by user
 export interface IProduct {
     _id : string
     title : string
+    desc : string
     img : string
     size: string[]
     color: string[]

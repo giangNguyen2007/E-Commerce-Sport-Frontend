@@ -12,6 +12,8 @@ import {
 import Login from './pages/Register&Login/Login';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
 import CartPage from './pages/Cart/CartPage';
+import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
+import Register from './pages/Register&Login/Register';
 
 function App() {
   return (
@@ -22,9 +24,9 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} /> 
                   <Route path="/list/:category" element={<CategoryPage />} />
-                  {/* <Route path="/product/:id" element={<SingleProductPage />} /> */}
+                  <Route path="/product/:id" element={<SingleProductPage />} />
                   <Route path="/cart" element={<CartPage />} />
-                  {/* <Route path="/register" element={<Register />} /> */}
+                  <Route path="/register" element={<Register />} />
                   {/* <Route path="/payment-success" element={<PaymentSuccess />} /> */}
               </Routes>
               {/* <Footer /> */}

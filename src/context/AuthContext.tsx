@@ -1,12 +1,5 @@
 import { createContext, useState, useReducer, useEffect } from "react";
-
-export type User = {
-    _id : String
-    username: String
-    email: String
-    akatsuki: String
-    accessToken? : String
-}
+import { User } from "../Types";
 
 type UserType = {
   user : User | null
@@ -14,7 +7,7 @@ type UserType = {
 
 type ActionType = {
     type : 'LOG_IN' | 'LOG_OUT'
-    payload : User
+    payload : User | null
 }
 
 function AuthReducer(state : UserType, action : ActionType){

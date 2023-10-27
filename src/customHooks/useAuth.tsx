@@ -4,8 +4,8 @@ import React, { useContext, useState } from 'react'
 import {useNavigate} from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { baseRequest } from '../axios';
-// import useChangeCart from './useChangeCart';
-import { User } from '../context/AuthContext';
+import useChangeCart from './useChangeCart';
+import { User } from '../Types';
 
 type LoginDataType = {
     username: String
@@ -21,7 +21,7 @@ const useAuth = () => {
     const [isLoading, setIsLoading] = useState<Boolean>(false);
 
     const {dispatchAuth} = useContext(AuthContext);
-    // const {loadUserCart} = useChangeCart();
+    const {loadUserCart} = useChangeCart();
     const navigate = useNavigate();
 
 
@@ -39,10 +39,9 @@ const useAuth = () => {
 
             setIsLoading(false) ;
 
-            debugger;
             dispatchAuth( { type: 'LOG_IN', payload: responseUser }) ;
 
-            console.log(response.data);
+            loadUserCart(response.data); 
             return response.data
          
         } catch (error:any) {

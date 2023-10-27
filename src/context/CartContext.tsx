@@ -61,6 +61,12 @@ function CartReducer(state : CartReducerState, action : CartReducerAction) : Car
                 cartItem => cartItem.product.key !== action.payload.key
             )
         }
+        
+      case "RESET_NULL":
+        return {
+            cartItems: [],
+            cartTotal: 0
+        }
 
       default:
         return state

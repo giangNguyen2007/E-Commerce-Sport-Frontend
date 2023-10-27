@@ -1,6 +1,6 @@
 import { CartItem } from "./CartContext"
 
-export type CartReducerAction = ACTION_SETCART | ACTION_ONE | ACTION_UPDATE_PRICE | ACTION_REMOVE | ACTION_CHANGE_QTY
+export type CartReducerAction = ACTION_SETCART | ACTION_ONE | ACTION_UPDATE_PRICE | ACTION_REMOVE | ACTION_CHANGE_QTY | ACTION_RESET_NULL
 
 
 type ACTION_SETCART = {
@@ -25,4 +25,8 @@ type ACTION_UPDATE_PRICE = {
 type ACTION_REMOVE = {
     type : "REMOVE_ONE"
     payload: { key : string}
+}
+
+type ACTION_RESET_NULL = {
+    type : "RESET_NULL"
 }

@@ -11,8 +11,17 @@ type Props = {}
 
 const Navbar = (props: Props) => {
 
-    const {cartItems} = useContext(CartContext);
-    const {user} = useContext(AuthContext);
+    const {cartItems, dispatchCart} = useContext(CartContext);
+    const {user, dispatchAuth} = useContext(AuthContext);
+
+    const handleLogout = (e : React.MouseEvent<HTMLDivElement, MouseEvent>) => { 
+        // remove user from storage
+        localStorage.removeItem('user');
+
+        // dispatch logout action
+        dispatchAuth({ type: 'LOG_OUT', payload: null }) ;
+        dispatchCart({type: 'RESET_NULL'});
+     }
 
   return (
         <div className='navbar'>
@@ -43,11 +52,7 @@ const Navbar = (props: Props) => {
                         <div className='menu-item'>Register</div>
                     </Link>
 
-                    <Link to={`/login`}>
-                        <div className='menu-item'>Login</div>
-                    </Link>
-
-                    {/* { user?
+                    { user?
                         <div className='menu-item' onClick={handleLogout}>
                             Logout
                         </div>
@@ -55,7 +60,7 @@ const Navbar = (props: Props) => {
                         <Link to={`/login`}>
                             <div className='menu-item'>Login</div>
                         </Link>
-                    } */}
+                    }
 
                     <Link to={`/cart`}>
                         <Badge badgeContent={cartItems.length} color='primary'>  

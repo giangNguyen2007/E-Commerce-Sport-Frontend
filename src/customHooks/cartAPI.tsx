@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { baseRequest } from '../axios';
 import useChangeCart from './useChangeCart';
-import { User } from '../context/AuthContext';
-import { ICartBackend, ICartProduct, ICartProductBackend, IProduct } from '../Types';
+import { ICartBackend, ICartProduct, ICartProductBackend, IProduct, User } from '../Types';
 
 
 // utility function to fetch single product from backend
