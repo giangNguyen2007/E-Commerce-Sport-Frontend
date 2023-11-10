@@ -14,6 +14,7 @@ import CategoryPage from './pages/CategoryPage/CategoryPage';
 import CartPage from './pages/Cart/CartPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 import Register from './pages/Register&Login/Register';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
                   <Route path="/register" element={<Register />} />
                   {/* <Route path="/payment-success" element={<PaymentSuccess />} /> */}
               </Routes>
-              {/* <Footer /> */}
+              <Footer />
             </Router>
     </div>
   );

@@ -55,8 +55,6 @@ const ProductCart = ({product, quantity, key} : {product : ICartProduct, quantit
             </div>
         </div>
 
-      
-
     </div>
   )
 }

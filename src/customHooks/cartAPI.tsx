@@ -15,7 +15,7 @@ const fetchSingleProduct = async (productId : string) => {
     }
 }
 
-// utility function to send cart to backend
+// utility function to save cart to backend
 const saveCart = async (user : User, products : ICartProductBackend[]) => {
     try {
         const response = await baseRequest.post(`/cart/${user._id}`, { userId : user._id, products}, {
@@ -25,7 +25,16 @@ const saveCart = async (user : User, products : ICartProductBackend[]) => {
         })
         
     } catch (error: any) {
-        throw Error(error)
+        try {
+            // if user has already a cart in database => call update route instead
+            const response = await baseRequest.put(`/cart/${user._id}`, { userId : user._id, products}, {
+                headers: {
+                    token: 'Bearer ' + user.accessToken
+                }
+            })
+        } catch (error: any) {
+            throw Error(error)
+        }
     }
 }
 
