@@ -26,7 +26,7 @@ const CategoryCard = ({item} : {item : ItemType}) => {
     <>
       <Link to={`/list/${item.title}`}>
         <div className='category-card'>
-            <button> {item.title + ' - Collection >'}  </button>
+            <button> {item.title + ' >'}  </button>
             <div className="image-wrapper">
               <img src= {item.image}/>
             </div>

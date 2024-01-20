@@ -18,10 +18,10 @@ const useChangeCart = () => {
         // debugger;
 
     const cartProduct : ICartProduct = {
-            _id : product._id,
+            id : product.id,
             title : product.title,
             img : product.img,
-            key : product._id + '&' + selectColor + '&' + selectSize,
+            key : product.id + '&' + selectColor + '&' + selectSize,
             color: selectColor,
             size: selectSize,
             price: product.price
@@ -40,7 +40,7 @@ const useChangeCart = () => {
                 }
             });
 
-            dispatchCart({type: 'UPDATE_TOTAL_PRICE'})
+            dispatchCart({type: 'UPDATE_TOTAL_PRICE_AND_QUANTITY'})
 
         } else {
             // if product not already in cart => add to cart
@@ -52,7 +52,7 @@ const useChangeCart = () => {
                 }
             });
 
-            dispatchCart({type: 'UPDATE_TOTAL_PRICE'})
+            dispatchCart({type: 'UPDATE_TOTAL_PRICE_AND_QUANTITY'})
 
         }
         
@@ -71,7 +71,7 @@ const useChangeCart = () => {
                 }
             });
 
-            dispatchCart({type: 'UPDATE_TOTAL_PRICE'})
+            dispatchCart({type: 'UPDATE_TOTAL_PRICE_AND_QUANTITY'})
 
         } 
 

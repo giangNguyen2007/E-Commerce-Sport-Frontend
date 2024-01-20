@@ -18,12 +18,11 @@ const CartPage = () => {
 
     const handleSaveCart = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
            // if user logged in, save cart data in backend
-           debugger;
         if (user) {
             // debugger;
             const products : ICartProductBackend[] = cartItems.map( (cartItem) => 
                 ({
-                    productId: cartItem.product._id,
+                    productId: cartItem.product.id,
                     color : cartItem.product.color,
                     size: cartItem.product.size,
                     key: cartItem.product.key,
@@ -73,8 +72,9 @@ const CartPage = () => {
                             <div className='check-out-item total'>€ {Math.round(cartTotal*1.1*100)/100}</div>
                         </div> 
                     </div>
-                    {!user && <div id='login-message-pay'>Register or Login to pay</div>}
-                    {/* <PaymentButton quantity = {cartTotal} /> */}
+                    
+                    <PaymentButton quantity = {cartTotal} />
+                    {(!user) && <div id='login-message-pay'>Register or Login to pay</div>}
                 
                 </div>
             </div>

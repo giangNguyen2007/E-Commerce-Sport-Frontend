@@ -27,6 +27,13 @@ const ColorAndSizeSelector = ({colorArray, sizeArray, setSelectColor, setSelectS
             ) : null}
         </div>
 
+        {/* <div className="size-palette" >        
+            <span >Color</span>
+            {sizeArray? sizeArray.map(
+                (size) => (<div> {size}</div> )
+            ) : null}
+        </div> */}
+
         <div className="select-wrapper">
             <span >Select</span>
             <Selector title='color' dataArray={colorArray} handleChange={setSelectColor}/>

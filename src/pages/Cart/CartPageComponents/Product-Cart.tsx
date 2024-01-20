@@ -13,13 +13,13 @@ const ProductCart = ({product, quantity, key} : {product : ICartProduct, quantit
 
   const handlePlus = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => { 
      dispatchCart( {type: 'CHANGE_QTY', payload:{ key: product.key, delta: 1}})
-     dispatchCart({type: 'UPDATE_TOTAL_PRICE'})
+     dispatchCart({type: 'UPDATE_TOTAL_PRICE_AND_QUANTITY'})
   }
 
   const handleMinus = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => { 
     if (quantity > 1) {
       dispatchCart( {type: 'CHANGE_QTY', payload:{ key: product.key, delta: -1}})
-      dispatchCart({type: 'UPDATE_TOTAL_PRICE'})
+      dispatchCart({type: 'UPDATE_TOTAL_PRICE_AND_QUANTITY'})
     }
   }
 
@@ -34,7 +34,7 @@ const ProductCart = ({product, quantity, key} : {product : ICartProduct, quantit
         />
         <div className="detail-wrapper">
             <div> <b>Product: </b> {product.title}</div>
-            <div> <b>ID: </b> {product._id}</div>
+            {/* <div> <b>ID: </b> {product._id}</div> */}
             <div> <b>Color: </b> {product.color}</div>
             <div> <b>Size: </b> {product.size}</div>
         </div>
@@ -48,9 +48,9 @@ const ProductCart = ({product, quantity, key} : {product : ICartProduct, quantit
             <div className='price'>€ {product.price * quantity}</div>
 
             <div className="delete-wrapper">
-            <div className="delete"
-                 onClick={handleDelete}>
-                <DeleteOutlined />
+              <div className="delete"
+                  onClick={handleDelete}>
+                  <DeleteOutlined />
               </div>
             </div>
         </div>

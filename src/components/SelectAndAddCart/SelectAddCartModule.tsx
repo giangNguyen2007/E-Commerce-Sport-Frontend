@@ -45,7 +45,7 @@ const SelectAddCart = ({product} : {product : IProduct}) => {
                     onClick={handleAddCart}
                     className="add-cart-btn" 
                     disabled = {!selectColor || !selectSize}>
-                Add to Cart
+                Add Cart
             </button>
         </div>
     </div>

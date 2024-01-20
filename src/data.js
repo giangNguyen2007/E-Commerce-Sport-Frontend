@@ -5,15 +5,15 @@
       title : 'Balls',
       cat: 'ballon',
       colorArray: ['all','white', 'blue', 'orange', 'yellow' ],
-      sizeArray: ['all', '4', '5'],
+      sizeArray: ['all', '3', '4', '5'],
       image: 'https://static01.nyt.com/newsgraphics/2014/06/06/soccer-balls/118fc61cb1316cafebc910ebb5e9a992076800f4/images/ball-2014-poster.jpg' 
     },
 
     {
       title : 'Shoes',
       cat: 'chaussure',
-      colorArray: ['all','white', 'blue', 'black', 'yellow' ],
-      sizeArray: ['all', '38', '40', '42'],
+      colorArray: ['all','white', 'blue', 'black', 'orange', 'green', 'red' ],
+      sizeArray: ['all', '36','38', '40', '42'],
       image: 'https://img.fruugo.com/product/6/07/545506076_max.jpg'
     },
 

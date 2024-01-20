@@ -30,28 +30,35 @@ const Register = () => {
         <div className='section-title'>Register</div>
 
         <div className='input-container'>
-          <label>Username:</label>
-          <input 
-            type="userName" 
-            onChange={(e) => setUsername(e.target.value)} 
-            value={username} 
-          />
-          
-          <label>Email:</label>
-          <input 
-            type="email" 
-            onChange={(e) => setEmail(e.target.value)} 
-            value={email} 
-          />
 
-          <label>Password:</label>
-          <input 
-            type="password" 
-            onChange={(e) => setPassword(e.target.value)} 
-            value={password} 
-          />
+              <div className='input-item'>
+                  <label>Username:</label>
+                  <input 
+                    type="userName" 
+                    onChange={(e) => setUsername(e.target.value)} 
+                    value={username} 
+                  />
+              </div>
+              
+              <div className='input-item'>
+                  <label>Email :</label>
+                  <input 
+                    type="email" 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    value={email} 
+                  />
+              </div>
 
-        </div>
+              <div className='input-item'>
+                  <label>Password:</label>
+                  <input 
+                    type="password" 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    value={password} 
+                  />
+              </div>
+
+            </div>
 
         <button disabled={isLoading}>Sign up</button>
         {error && <div className="error">{error}</div>}

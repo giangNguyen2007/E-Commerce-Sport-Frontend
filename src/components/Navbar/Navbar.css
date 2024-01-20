@@ -2,7 +2,7 @@
 /* ===NAVBAR === */
 .navbar {
     height: 60px;
-    /* background-color: burlywood; */
+    background-color: rgb(218, 231, 213);
 }
 
 .navbar-wrapper {
@@ -12,56 +12,97 @@
     gap: 10px;
 }
 
-.navbar-left {
-    flex:1;
-    display: flex;
-    gap:10px;
-    align-items: center;
-}
+    /* =========Left section ============== */
 
-.navbar-left .search-container{
-    display: flex;
-    border: 0.5px solid black;
-    margin-left: 10px;
-}
+    .navbar-left {
+        flex:1;
+        display: flex;
+        gap:10px;
+        align-items: center;
+    }
 
-.navbar-left .language{
-    font-size: medium;
-}
+        .navbar-left .search-container{
+            display: flex;
+            border: 0.5px solid black;
+            margin-left: 10px;
+        }
 
-/* ============== */
-.navbar-center {
-    flex:1;
-}
+        .navbar-left .language{
+            font-size: medium;
+        }
 
-.navbar-center .title{
-    margin: 0;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: center;
-}
+    /* ==========Center section ============= */
+    .navbar-center {
+        flex:1;
+    }
 
-/* ============ */
+        .navbar-center .title{
+            margin: 0;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
 
-.navbar-right {
-    flex:1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+    /* ==========Right section============= */
 
-.navbar-right .menu-item{
-    font-size: 15px;
-    margin-left: 10px; 
-    padding: 5px 5px;
-    border-radius: 10%;
-}
+    .navbar-right {
+        flex:1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 
-.menu-item:hover{
-    background-color: lightgray; 
-    cursor: pointer;
-}
+        .navbar-right   .user-email {
+            color: brown;
+        }
 
-.user-email {
-    color: green;
-}
+        .navbar-right .menu-item{
+            font-size: 15px;
+            margin-left: 10px; 
+            padding: 5px 5px;
+            border-bottom: 1px solid;
+            cursor: pointer;
+        }
+
+        .menu-item:hover{
+            border-radius: 10%;
+            color: white;
+            /* background-color: rgb(21, 94, 86); */
+            background-color: rgb(21, 94, 86);
+            transition: 0.3s;
+            transform: scale(1.1);
+        }
+
+        .dropdown{
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown .content{
+            min-width: 80px;
+            left: 8px;
+            top: 35px;
+            display: none;
+            position: absolute;
+            background-color: white;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .content{
+            display: block;
+        }
+
+            .dropdown .dropdown-item{
+                padding-left: 5px;
+                margin: 5px;
+            }
+
+            .dropdown .dropdown-item:hover{
+                background-color: darkgrey;
+            }
+
+
+    
+
+        

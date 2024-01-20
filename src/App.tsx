@@ -15,6 +15,7 @@ import CartPage from './pages/Cart/CartPage';
 import SingleProductPage from './pages/SingleProductPage/SingleProductPage';
 import Register from './pages/Register&Login/Register';
 import Footer from './components/Footer/Footer';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                   <Route path="/login" element={<Login />} /> 
                   <Route path="/list/:category" element={<CategoryPage />} />
                   <Route path="/product/:id" element={<SingleProductPage />} />
+                  <Route path="/product/search/:query" element={<SearchPage />} />
                   <Route path="/cart" element={<CartPage />} />
                   <Route path="/register" element={<Register />} />
                   {/* <Route path="/payment-success" element={<PaymentSuccess />} /> */}

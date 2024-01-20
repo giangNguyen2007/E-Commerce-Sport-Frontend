@@ -5,6 +5,7 @@
     height: 100%;
     margin-top: 20px;
     position: relative;
+    overflow: hidden;
 }
 
 /* ====== ARROW ========= */
@@ -22,6 +23,7 @@
     margin: auto;
     cursor: pointer;
     opacity: 0.5;
+    z-index: 2;
 }
 
 #left-arrow {
@@ -36,6 +38,9 @@
 
 .slide-wrapper {
        display: flex;
+       gap: 8px;
+       width: max-content;
+       transition: all 1s ease;
 }
 
 .slide {   

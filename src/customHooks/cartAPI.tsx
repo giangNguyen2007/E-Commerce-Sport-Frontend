@@ -8,7 +8,6 @@ import { ICartBackend, ICartProduct, ICartProductBackend, IProduct, User } from 
 const fetchSingleProduct = async (productId : string) => {
     try {
         const res = await baseRequest.get<IProduct>(`product/${productId}`)
-        debugger;
         return res.data
     } catch (error: any) {
         throw Error(error)
@@ -17,8 +16,12 @@ const fetchSingleProduct = async (productId : string) => {
 
 // utility function to save cart to backend
 const saveCart = async (user : User, products : ICartProductBackend[]) => {
+
+    const commentBody ={
+        authorId: user.id,
+    }
     try {
-        const response = await baseRequest.post(`/cart/${user._id}`, { userId : user._id, products}, {
+        const response = await baseRequest.post(`/cart/${user.id}`, { userId : user.id, products}, {
             headers: {
                 token: 'Bearer ' + user.accessToken
             }
@@ -27,7 +30,7 @@ const saveCart = async (user : User, products : ICartProductBackend[]) => {
     } catch (error: any) {
         try {
             // if user has already a cart in database => call update route instead
-            const response = await baseRequest.put(`/cart/${user._id}`, { userId : user._id, products}, {
+            const response = await baseRequest.put(`/cart/${user.id}`, { userId : user.id, products}, {
                 headers: {
                     token: 'Bearer ' + user.accessToken
                 }
@@ -43,7 +46,7 @@ const saveCart = async (user : User, products : ICartProductBackend[]) => {
 const fetchUserCart = async (user: User) => {
  
     try {
-        const userCart = await baseRequest.get<ICartBackend[]>(`/cart/find/${user._id}`, {
+        const userCart = await baseRequest.get<ICartBackend[]>(`/cart/find/${user.id}`, {
             headers: {
                 token: 'Bearer ' + user.accessToken
             }

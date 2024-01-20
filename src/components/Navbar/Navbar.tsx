@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import { SearchOutlined, ShoppingCartOutlined } from '@material-ui/icons'
@@ -11,8 +11,9 @@ type Props = {}
 
 const Navbar = (props: Props) => {
 
-    const {cartItems, dispatchCart} = useContext(CartContext);
+    const {cartQuantity, dispatchCart} = useContext(CartContext);
     const {user, dispatchAuth} = useContext(AuthContext);
+    const [searchQuery, setSearchQuery] = useState('')
 
     const handleLogout = (e : React.MouseEvent<HTMLDivElement, MouseEvent>) => { 
         // remove user from storage
@@ -31,8 +32,17 @@ const Navbar = (props: Props) => {
                         ENG
                     </div>
                     <div className="search-container">
-                        <input type="text" />
-                        <SearchOutlined/>
+                        <input 
+                            type="text" 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)} 
+                        />
+                        
+                        <Link to={`/product/search/${searchQuery}`}
+                            onClick={(e) => setSearchQuery("")}
+                        >
+                            <SearchOutlined/>
+                        </Link>
                     </div>
                 </div>
 
@@ -44,26 +54,50 @@ const Navbar = (props: Props) => {
                     <div className='user-email'> 
                         {user? user.email : null}
                     </div>
+
                     <Link to={`/`}>
                         <div className='menu-item'>Home</div>
                     </Link>
 
-                    <Link to={`/register`}>
-                        <div className='menu-item'>Register</div>
-                    </Link>
+                    <div className='dropdown'>
+                        <div className='menu-item'>Category</div>
 
-                    { user?
-                        <div className='menu-item' onClick={handleLogout}>
-                            Logout
+                        <div className="content">
+                            <Link to={`/list/Shoes`}>
+                                <div className='dropdown-item'>Shoes</div>
+                            </Link>
+                            <Link to={`/list/Balls`}>
+                                <div className='dropdown-item'>Balls</div>
+                            </Link>
+                            <Link to={`/list/Shirts`}>
+                                <div className='dropdown-item'>Shirts</div>
+                            </Link>
                         </div>
-                        :
-                        <Link to={`/login`}>
-                            <div className='menu-item'>Login</div>
-                        </Link>
-                    }
+                    </div>
+
+                    <div className='dropdown'>
+                            { user?
+                                <div className='menu-item' onClick={handleLogout}>
+                                    Logout
+                                </div>
+                                :
+                                <Link to={`/login`}>
+                                    <div className='menu-item'>Login</div>
+                                </Link>
+                            }
+
+                        <div className="content">
+                            {!user && <Link to={`/register`}>
+                                <div className='dropdown-item'>Register</div>
+                            </Link>}
+                        </div>
+                    </div>
+
+                   
+                    
 
                     <Link to={`/cart`}>
-                        <Badge badgeContent={cartItems.length} color='primary'>  
+                        <Badge badgeContent={cartQuantity} color='primary'>  
                             <div className='menu-item'> <ShoppingCartOutlined/> </div>
                         </Badge>
                     </Link>

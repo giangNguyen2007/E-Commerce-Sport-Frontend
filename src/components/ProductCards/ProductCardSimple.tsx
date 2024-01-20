@@ -2,8 +2,8 @@ import './ProductCard.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import SelectAddCart from '../../../components/SelectAndAddCart/SelectAddCartModule'
-import { IProduct } from '../../../Types'
-import SelectAddCart from '../../../components/SelectAndAddCart/SelectAddCartModule'
+import { IProduct } from '../../Types'
+import SelectAddCart from '../SelectAndAddCart/SelectAddCartModule'
 
 type ProductCardProps = {
     product : IProduct
@@ -11,7 +11,7 @@ type ProductCardProps = {
 }
 
 
-const ProductCard = ( {product, key} : ProductCardProps) => {
+const ProductCardSimple = ( {product, key} : ProductCardProps) => {
 
   return (
     <div className="product-card">
@@ -20,8 +20,8 @@ const ProductCard = ( {product, key} : ProductCardProps) => {
                 className='product-img'
                 src={product.img} />
             
-            <Link className='title' to={`/product/${product._id}`}>
-                <div className="product-title">
+            <Link className='title' to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
+                <div className="text-xs text-slate-700">
                     {product.title}
                 </div>
             </Link>
@@ -32,12 +32,10 @@ const ProductCard = ( {product, key} : ProductCardProps) => {
                         € {product.price}
                     </div>
                 </div>
-
-                <SelectAddCart product={product} />
             </div>    
       
     </div>
     )
 }
 
-export default ProductCard
+export default ProductCardSimple;

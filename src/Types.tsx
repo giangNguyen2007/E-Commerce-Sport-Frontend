@@ -1,26 +1,39 @@
 
 export type User = {
-    _id : String
-    username: String
-    email: String
-    akatsuki: String
-    accessToken? : String
+    id : string
+    username: string
+    email: string
+    akatsuki: string
+    accessToken? : string
 }
 
 // product fetched from backend : size and color in array, have not been selected by user
 export interface IProduct {
-    _id : string
+    id : string
     title : string
     desc : string
     img : string
     size: string[]
     color: string[]
     price: number
+    comments: {
+        rating: number
+    }[]
+}
+
+export interface IProductComment {
+    id : string
+    content : string
+    rating:number
+    authorId: string
+    author : {
+        username: string
+    }
 }
 
 // product in cart : size and color have been selected and no longer in Array, key property added
 export interface ICartProduct {
-    _id : string
+    id : string
     key: string
     title : string
     img : string

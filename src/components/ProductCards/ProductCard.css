@@ -6,6 +6,11 @@
     flex-direction: column;
 }
 
+.product-card:hover{
+    transition: 0.3s;
+    transform: scale(1.03);
+}
+
 /* ==== image & title ===== */
 .product-card img{
     width: 200px;
@@ -18,6 +23,7 @@
     width: 200px;
     padding: 5px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 

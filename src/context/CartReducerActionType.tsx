@@ -19,7 +19,7 @@ type ACTION_CHANGE_QTY = {
 }
 
 type ACTION_UPDATE_PRICE = {
-    type : "UPDATE_TOTAL_PRICE"
+    type : "UPDATE_TOTAL_PRICE_AND_QUANTITY"
 }
 
 type ACTION_REMOVE = {

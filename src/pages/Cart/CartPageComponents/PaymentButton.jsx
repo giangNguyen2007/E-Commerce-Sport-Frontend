@@ -5,7 +5,7 @@ import { baseRequest } from "../../../axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
-import { AuthContext } from "../../../context.js/AuthContext";
+import { AuthContext } from '../../../context/AuthContext';
 
 
 const STRIPE_PUBLIC_KEY = 'pk_test_51O1p7mJ48YTMVMRZN3ydoUFTR9DHuiMEwcujai2JxY0bG0GqJc0K3BVjcn50KWByJYDce9ZJng6Xjvj3j172XrWx00LJzOokxn'

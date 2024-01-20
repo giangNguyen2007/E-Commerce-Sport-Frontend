@@ -9,7 +9,8 @@ export type CartItem = {
 
 type CartReducerState = {
   cartItems : CartItem[]
-  cartTotal: number
+  cartTotal: number,
+  cartQuantity: number
 }
 
 function CartReducer(state : CartReducerState, action : CartReducerAction) : CartReducerState{
@@ -19,6 +20,10 @@ function CartReducer(state : CartReducerState, action : CartReducerAction) : Car
             cartItems: action.payload,
             cartTotal : state.cartItems.reduce(
               (total, cartItem) => total + cartItem.product.price*cartItem.quantity,
+              0   // initial value
+            ),
+            cartQuantity:  state.cartItems.reduce(
+              (total, cartItem) => total + cartItem.quantity,
               0   // initial value
             )
         }
@@ -47,11 +52,13 @@ function CartReducer(state : CartReducerState, action : CartReducerAction) : Car
             )
         }
       
-      case "UPDATE_TOTAL_PRICE":
+      case "UPDATE_TOTAL_PRICE_AND_QUANTITY":
         return {
             ...state,
             cartTotal: state.cartItems.reduce(
-              (total, cartItem) => total + cartItem.product.price*cartItem.quantity, 0 )
+              (total, cartItem) => total + cartItem.product.price*cartItem.quantity, 0 ),
+            cartQuantity: state.cartItems.reduce(
+              (total, cartItem) => total + cartItem.quantity, 0 )
         }
       
       case "REMOVE_ONE":
@@ -65,7 +72,8 @@ function CartReducer(state : CartReducerState, action : CartReducerAction) : Car
       case "RESET_NULL":
         return {
             cartItems: [],
-            cartTotal: 0
+            cartTotal: 0,
+            cartQuantity: 0
         }
 
       default:
@@ -76,10 +84,11 @@ function CartReducer(state : CartReducerState, action : CartReducerAction) : Car
 type CartContextType = {
   cartItems : CartItem[]
   cartTotal: number
+  cartQuantity: number
   dispatchCart : React.Dispatch<CartReducerAction>
 }
 
-export const CartContext = createContext<CartContextType>({cartItems : [], cartTotal:0, dispatchCart : () => {}} )
+export const CartContext = createContext<CartContextType>({cartItems : [], cartTotal:0, cartQuantity: 0, dispatchCart : () => {}} )
 
 
 type CartContextProviderProps = {
@@ -88,7 +97,7 @@ type CartContextProviderProps = {
 
 export default function CartContextProvider ({children} : CartContextProviderProps) {
 
-    const [state, dispatchCart] = useReducer(CartReducer, {cartItems: [], cartTotal: 0})
+    const [state, dispatchCart] = useReducer(CartReducer, {cartItems: [], cartTotal: 0, cartQuantity: 0})
 
     return (  
         <CartContext.Provider value={{ ...state, dispatchCart}}>
