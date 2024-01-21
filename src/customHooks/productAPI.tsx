@@ -64,6 +64,7 @@ const fetchProductsByCategory = async (category : string) => {
 const fetchProductsByTitleQuery = async (query : string) => { 
     try {
         const res = await baseRequest.get<IProduct[]>(`product/search/query?title=${query}`)
+        debugger;
         return res.data;
     } catch (error: any) {
         throw Error(error)    

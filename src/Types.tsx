@@ -19,6 +19,9 @@ export interface IProduct {
     comments: {
         rating: number
     }[]
+    favorByUserIds: string[]
+    lastVisitedByUserIds: string[]
+
 }
 
 export interface IProductComment {

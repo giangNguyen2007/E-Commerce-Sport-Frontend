@@ -16,6 +16,7 @@ const SearchPage = () => {
         const fetchProducts = async () => { 
             try {
                     const fetchedProducts = await fetchProductsByTitleQuery(searchQuery);
+                    debugger;
                     setProducts(fetchedProducts);
 
             } catch (error) {

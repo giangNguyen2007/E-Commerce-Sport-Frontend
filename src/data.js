@@ -14,7 +14,7 @@
       cat: 'chaussure',
       colorArray: ['all','white', 'blue', 'black', 'orange', 'green', 'red' ],
       sizeArray: ['all', '36','38', '40', '42'],
-      image: 'https://img.fruugo.com/product/6/07/545506076_max.jpg'
+      image: 'https://www.futbolemotion.com/imagesarticulos/169377/grandes/bota-nike-mercurial-superfly-8-elite-fg-gris-0.webp'
     },
 
     {

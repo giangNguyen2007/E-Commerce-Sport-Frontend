@@ -43,12 +43,14 @@ const Slider = () => {
 
         <div className="slide-wrapper" ref={sliderRef}>
             <div className="slide" >
-                <div className="img-container">
-                    <img src="https://img.fruugo.com/product/6/07/545506076_max.jpg" />
-                </div>
+                <Link to={`/product/653234852c518659d50aac4c`}>
+                    <div className="img-container">
+                        <img src="https://www.futbolemotion.com/imagesarticulos/169377/grandes/bota-nike-mercurial-superfly-8-elite-fg-gris-0.webp" />
+                    </div>
+                </Link>
                 
                 <div className="info-container">
-                    <div className='section-title'>Slide 1</div>
+                    <div className='section-title'>Winter Sales</div>
                     
                     <p>Nike Mercurial Superfly 8 Elite FG </p>
 
@@ -59,16 +61,18 @@ const Slider = () => {
             </div>
 
             <div className="slide" ref={oneSlideRef}>
-                <div className="img-container">
-                    <img src="https://img.fruugo.com/product/6/07/545506076_max.jpg" />
-                </div>
+                <Link to={`/product/6530ed1d2c518659d50aa99a`}>
+                    <div className="img-container">
+                        <img src="https://www.casalsport.com/img/W/CAS/ST/FB/31/09/FB3109/FB3109_ST.jpg" />
+                    </div>
+                </Link>
                 
                 <div className="info-container">
-                    <div className='section-title'>Slide 2</div>
+                    <div className='section-title'>Winter Sales</div>
                     
-                    <p>Nike Mercurial Superfly 8 Elite FG </p>
+                    <p>Ballon Al Rihla Coupe du Monde 2022 </p>
 
-                    <Link to={`/product/653234852c518659d50aac4c`}>
+                    <Link to={`/product/6530ed1d2c518659d50aa99a`}>
                         <button>SHOP NOW</button>
                     </Link>
                 </div>
